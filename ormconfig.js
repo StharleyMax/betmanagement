@@ -4,4 +4,5 @@ module.exports = {
   ssl: {
     rejectUnauthorized: false,
   },
+  synchronize: false,
 };

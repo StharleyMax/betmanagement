@@ -1,35 +1,24 @@
 {
-    "root": true,
-    "env": {
-      "es2021": true,
-      "node": true
-    },
-    "extends": [
-      "airbnb-base",
-      "plugin:import/typescript",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier/@typescript-eslint",
-      "plugin:prettier/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "plugins": [
-      "@typescript-eslint",
-      "prettier"
-    ],
-    "rules": {
-      "no-console": "warn",
-      "prettier/prettier": "error"
-    },
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
-      }
-    }
-
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-undef":"off",
+    "no-console": "warn",
+    "prettier/prettier": "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }
