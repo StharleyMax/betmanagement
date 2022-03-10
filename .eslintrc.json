@@ -6,6 +6,7 @@
     },
     "extends": [
       "airbnb-base",
+      "plugin:import/typescript",
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
@@ -24,5 +25,11 @@
     "rules": {
       "no-console": "warn",
       "prettier/prettier": "error"
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
     }
+
 }
