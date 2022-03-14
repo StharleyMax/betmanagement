@@ -3,5 +3,13 @@ export class UserDto {
   email: string;
   password: string;
   telephone: string;
-  confirmPassword: string;
+}
+
+export class UpdateUserDto {
+  id: number;
+  oldPassword: string;
+  name: string;
+  email: string;
+  password: string;
+  telephone: string;
 }

@@ -5,7 +5,6 @@ import { celebrate, Segments, Joi } from 'celebrate';
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.get('/', usersController.index);
 usersRouter.post(
   '/',
   celebrate({
@@ -18,6 +17,30 @@ usersRouter.post(
     },
   }),
   usersController.create,
+);
+usersRouter.get('/', usersController.index);
+usersRouter.get('/:value', usersController.show);
+usersRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      telephone: Joi.string().required(),
+      email: Joi.string().email().required(),
+      oldPassword: Joi.string(),
+      password: Joi.string().optional(),
+      passwordConfirmation: Joi.string()
+        .valid(Joi.ref('password'))
+        .when('password', {
+          is: Joi.exist(),
+          then: Joi.required(),
+        }),
+    },
+    [Segments.PARAMS]: {
+      id: Joi.number().required(),
+    },
+  }),
+  usersController.update,
 );
 
 export default usersRouter;

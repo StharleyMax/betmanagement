@@ -9,7 +9,6 @@ export class CreateUsersService {
     name,
     email,
     password,
-    confirmPassword,
     telephone,
   }: UserDto) {
     const usersRepository = getCustomRepository(UsersRepository);
