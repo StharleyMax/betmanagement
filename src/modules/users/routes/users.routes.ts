@@ -19,7 +19,15 @@ usersRouter.post(
   usersController.create,
 );
 usersRouter.get('/', usersController.index);
-usersRouter.get('/:value', usersController.show);
+usersRouter.get('/:value', celebrate({
+  [Segments.PARAMS]: {
+    value: Joi.string().required(),
+  },
+  [Segments.BODY]: {
+    operator: Joi.string().required(),
+    type: Joi.string().required()
+  }
+}), usersController.show);
 usersRouter.put(
   '/:id',
   celebrate({
@@ -41,6 +49,15 @@ usersRouter.put(
     },
   }),
   usersController.update,
+);
+usersRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.number().required(),
+    },
+  }),
+  usersController.delete,
 );
 
 export default usersRouter;

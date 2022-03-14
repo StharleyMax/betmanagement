@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { CreateUsersService } from '../services/CreateUsersService';
+import { DeleteUsersService } from '../services/DeleteUsersService';
 import { ListUsersService } from '../services/ListUsersService';
 import { ShowUsersService } from '../services/ShowUsersService';
 import { UpdateUsersService } from '../services/UpdateUsersService';
@@ -35,7 +36,6 @@ export default class UsersController {
     const { name, email, password, oldPassword, telephone } = request.body;
     const { id } = request.params;
     const updateService = new UpdateUsersService();
-
     const update = await updateService.execute({
       name,
       email,
@@ -45,5 +45,12 @@ export default class UsersController {
       id: +id
     });
     return response.json(update);
+  }
+
+  public async delete(request: Request, response: Response){
+    const {id} = request.params;
+    const deleteService = new DeleteUsersService();
+    await deleteService.execute(+id);
+    response.json('User deteled')
   }
 }
