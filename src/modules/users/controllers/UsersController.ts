@@ -1,9 +1,12 @@
 import { Request, Response } from 'express';
 import { CreateUsersService } from '../services/CreateUsersService';
+import { ListUsersService } from '../services/ListUsersService';
 
 export default class UsersController {
   public async index(request: Request, response: Response): Promise<Response> {
-    return response.send('controller user');
+    const listUsers = new ListUsersService();
+    const users = await listUsers.execute()
+    return response.json(users);
   }
 
   public async create(request: Request, response: Response): Promise<Response> {

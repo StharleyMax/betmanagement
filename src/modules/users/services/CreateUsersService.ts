@@ -1,4 +1,4 @@
-import { response } from 'express';
+import AppError from '@shared/errors/AppError';
 import { UserDto } from '../dto/user.dto';
 import { UsersRepository } from '../typeorm/repositories/UsersRepository';
 import { hash } from 'bcryptjs';
@@ -14,9 +14,7 @@ export class CreateUsersService {
   }: UserDto) {
     const usersRepository = getCustomRepository(UsersRepository);
     const emailExist = await usersRepository.findByEmail(email);
-    if (emailExist) throw new Error(`Email: ${email} already exist`);
-    if (password !== confirmPassword)
-      throw new Error(`error confirming password `);
+    if (emailExist) throw new AppError(`Email: ${email} already exist`);
     const hashPassword = await hash(password, 8);
     const user = await usersRepository.save({
       name,
