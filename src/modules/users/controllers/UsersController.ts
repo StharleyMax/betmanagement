@@ -15,7 +15,7 @@ export default class UsersController {
   public async show(request: Request, response: Response): Promise<Response> {
     const userService = new ShowUsersService();
     const { value } = request.params;
-    const {type, operator} = request.body;
+    const { type, operator } = request.body;
     const showUser = await userService.execute(type, operator, value);
     return response.json(showUser);
   }
@@ -42,15 +42,15 @@ export default class UsersController {
       password,
       oldPassword,
       telephone,
-      id: +id
+      id: +id,
     });
     return response.json(update);
   }
 
-  public async delete(request: Request, response: Response){
-    const {id} = request.params;
+  public async delete(request: Request, response: Response) {
+    const { id } = request.params;
     const deleteService = new DeleteUsersService();
     await deleteService.execute(+id);
-    response.json('User deteled')
+    response.status(200).end();
   }
 }

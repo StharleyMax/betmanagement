@@ -7,6 +7,6 @@ export class DeleteUsersService {
     const userService = getCustomRepository(UsersRepository);
     const user = await userService.findOne(id);
     if (!user) throw new AppError('user not found');
-    return userService.delete(id);
+    return userService.softDelete(id);
   }
 }
