@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { CreateBankService } from '../services/CreateBankService';
 import { DeleteBankService } from '../services/DeleteBankService';
 import { FindBankService } from '../services/FindBankService';
+import { ShowBankService } from '../services/ShowBankService';
 import { UpdateBankService } from '../services/UpdateBankService';
 
 export class BankController {
@@ -12,6 +13,16 @@ export class BankController {
     if (!userId) throw new AppError('userId is required');
     const bankService = new FindBankService();
     const bank = await bankService.execute(+userId);
+    return response.json(bank);
+  }
+
+  public async find(request: Request, response: Response): Promise<Response> {
+    //const userId = request.user.id;
+    const { userId } = request.query;
+    if (!userId) throw new AppError('userId is required');
+    const bankId = request.params.id;
+    const bankService = new ShowBankService();
+    const bank = await bankService.execute(+bankId, +userId);
     return response.json(bank);
   }
 

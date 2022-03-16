@@ -7,6 +7,15 @@ const bankRouter = Router();
 const bankController = new BankController();
 
 bankRouter.get('/', bankController.index);
+bankRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.number().required(),
+    },
+  }),
+  bankController.find,
+);
 bankRouter.post(
   '/',
   celebrate({
