@@ -12,6 +12,9 @@ export class SportsEntity {
   @Column({ name: 'category' })
   category: string;
 
+  @Column({ name: 'actived' })
+  actived: boolean;
+
   @CreateDateColumn({ type: 'timestamp', name: 'create_at' })
   create_at: Date;
 
