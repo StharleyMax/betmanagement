@@ -18,5 +18,6 @@ bankRouter.post(
   }),
   bankController.create,
 );
+bankRouter.put('/:id', bankController.update);
 
 export default bankRouter;

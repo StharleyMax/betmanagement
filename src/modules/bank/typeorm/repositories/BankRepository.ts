@@ -4,11 +4,21 @@ import { Bank } from '../entities/Bank';
 @EntityRepository(Bank)
 export class BankRepository extends Repository<Bank> {
   public async findByUser(userId: number): Promise<Bank[] | undefined> {
+    const banks = await this.find();
+    return banks;
+  }
+
+  public async findOneByUser(
+    bankId: number,
+    userId: number,
+  ): Promise<Bank | undefined> {
     try {
-      const banks = await this.find()
-      return banks;
+      const bank = await this.findOne({
+        where: { id: bankId, userId: userId },
+      });
+      return bank;
     } catch (error) {
-      console.error('me diz cacete: ', error);
+      console.log('error: ', error);
     }
   }
 }
