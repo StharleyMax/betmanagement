@@ -10,7 +10,7 @@ export class DeleteSportsService {
     const sportsCreate = sportsEntity.create({ id, actived: false });
     const sportsSave = sportsEntity.save(sportsCreate);
 
-    const result = sportsEntity.find({ where: { id, actived: false } });
+    const result = sportsEntity.find({ where: { id, actived: false, update_at: new Date() } });
     return result;
 
   }
