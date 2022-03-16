@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('sports')
 export class SportsEntity {
@@ -18,6 +18,6 @@ export class SportsEntity {
   @CreateDateColumn({ type: 'timestamp', name: 'create_at' })
   create_at: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: 'update_at' })
+  @UpdateDateColumn({ type: 'timestamp', name: 'update_at' })
   update_at: Date;
 }
