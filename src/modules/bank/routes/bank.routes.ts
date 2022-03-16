@@ -27,7 +27,20 @@ bankRouter.post(
   }),
   bankController.create,
 );
-bankRouter.put('/:id', bankController.update);
+bankRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      description: Joi.string(),
+      nameBet: Joi.string(),
+    },
+    [Segments.PARAMS]: {
+      id: Joi.number().required(),
+    },
+  }),
+  bankController.update,
+);
 bankRouter.delete(
   '/:id',
   celebrate({
