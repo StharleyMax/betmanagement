@@ -3,6 +3,7 @@ import { ActivedSport } from '../services/ActivedSports.service';
 import { CreateSports } from "../services/CreateSports.service";
 import { DeleteSportsService } from '../services/DeleteSports.service';
 import { GetAllSportsService } from '../services/GetallSports.service';
+import { UpdateSports } from '../services/UpdateSports.service';
 
 
 export class SportsControllers {
@@ -30,6 +31,14 @@ export class SportsControllers {
     const updateSports = new ActivedSport();
     const activedSports = await updateSports.execute(+id);
     return response.json(activedSports);
+  }
+
+  public async updateSports(request: Request, response: Response) {
+    const { name, category } = request.body;
+    const { id } = request.params;
+    const updateSports = new UpdateSports();
+    const update = await updateSports.execute({ name, category, id: +id });
+    return response.json(update);
   }
 
 
