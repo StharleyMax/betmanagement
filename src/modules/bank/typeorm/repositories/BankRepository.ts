@@ -12,13 +12,9 @@ export class BankRepository extends Repository<Bank> {
     bankId: number,
     userId: number,
   ): Promise<Bank | undefined> {
-    try {
-      const bank = await this.findOne({
-        where: { id: bankId, userId: userId },
-      });
-      return bank;
-    } catch (error) {
-      console.log('error: ', error);
-    }
+    const bank = await this.findOne({
+      where: { id: bankId, userId: userId },
+    });
+    return bank;
   }
 }

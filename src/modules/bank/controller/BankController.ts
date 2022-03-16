@@ -1,6 +1,7 @@
 import AppError from '@shared/errors/AppError';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { CreateBankService } from '../services/CreateBankService';
+import { DeleteBankService } from '../services/DeleteBankService';
 import { FindBankService } from '../services/FindBankService';
 import { UpdateBankService } from '../services/UpdateBankService';
 
@@ -40,5 +41,15 @@ export class BankController {
       nameBet,
     });
     return response.json(updateBank);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    //const userId = request.user.id;
+    const { userId } = request.query;
+    if (!userId) throw new AppError('userId is required');
+    const bankId = request.params.id;
+    const bankService = new DeleteBankService();
+    await bankService.execute(+bankId, +userId);
+    return response.status(200).end();
   }
 }

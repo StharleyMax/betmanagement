@@ -19,5 +19,14 @@ bankRouter.post(
   bankController.create,
 );
 bankRouter.put('/:id', bankController.update);
+bankRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.number().required(),
+    },
+  }),
+  bankController.delete,
+);
 
 export default bankRouter;
