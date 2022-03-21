@@ -15,6 +15,16 @@ export class SportsControllers {
     return response.json(sports);
   }
 
+  public async getById(request: Request, response: Response) {
+    const { id } = request.params;
+    const listSportsId = new GetAllSportsService();
+    const sports = await listSportsId.getById(+id);
+    if (sports instanceof Error) {
+      return response.status(200).json(sports.message);
+    }
+    return response.status(200).send(sports);
+  }
+
   public async create(request: Request, response: Response) {
     const { name, category } = request.body;
 

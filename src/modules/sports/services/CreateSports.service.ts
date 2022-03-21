@@ -10,7 +10,7 @@ export class CreateSports {
   async execute({ name, category }: SportsDTO): Promise<SportsEntity | Error> {
     const repo = getRepository(SportsEntity);
 
-    if (await repo.findOne({ name })) {
+    if (await repo.findOne({ name, actived: true })) {
       return new Error("Name already exists")
     }
     const sports = repo.create({ name, category, actived: true });
