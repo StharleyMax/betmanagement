@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/StharleyMax/betmanagement#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
     "dotenv": "^16.0.0",
