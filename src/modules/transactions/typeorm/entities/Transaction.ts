@@ -1,40 +1,43 @@
-import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
+import { Bank } from '@modules/bank/typeorm/entities/Bank';
 import { User } from '@modules/users/typeorm/entities/User';
 import {
-  Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
-  UpdateDateColumn,
   DeleteDateColumn,
+  Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('bank')
-export class Bank {
+@Entity('transactions')
+export class Transaction {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @ManyToOne(() => User, user => user.bank)
   @JoinColumn({ name: 'user_id' })
+  @ManyToOne(() => User, user => user.transactions)
   user: User;
 
-  @OneToMany(() => Transaction, transaction => transaction.bank)
-  transactions: Transaction[];
+  @JoinColumn({ name: 'bank_id' })
+  @ManyToOne(() => Bank, bank => bank.transactions)
+  bank: Bank;
 
   @Column({ name: 'user_id' })
   userId: number;
 
-  @Column()
-  name: string;
+  @Column({ name: 'bank_id' })
+  bankId: number;
 
-  @Column({ name: 'name_bet' })
-  nameBet: string;
+  @Column({ name: 'old_balance' })
+  oldBalance: number;
 
   @Column()
-  description: string;
+  type: string; //enum
+
+  @Column()
+  price: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
