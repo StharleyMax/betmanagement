@@ -36,6 +36,9 @@ export class Bank {
   @Column()
   description: string;
 
+  @Column()
+  balance: number
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
