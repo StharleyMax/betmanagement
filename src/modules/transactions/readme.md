@@ -49,10 +49,10 @@
  ---
 
 - []  Cadastrar TRANSACTION
-  - [] Validar se user e bank estão ativos
-  - [] Se type for "SAQUE" verificar se possui esse saldo na "BANCA"
-  - [] Buscar saldo(BALANCE) anterior da "BANCA" e registrar no old_balance
-  - [] Atualizar saldo(balance) da "BANCA"
+  - [X] Validar se user e bank estão ativos
+  - [X] Se type for "SAQUE" verificar se possui esse saldo na "BANCA"
+  - [X] Buscar saldo(BALANCE) anterior da "BANCA" e registrar no old_balance
+  - [X] Atualizar saldo(balance) da "BANCA"
 
 - [] Update TRANSACTION
   - [] Só é possivel atualizar a ultima "TRANSAÇÃO"
