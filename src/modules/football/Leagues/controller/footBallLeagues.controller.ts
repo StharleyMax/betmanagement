@@ -8,6 +8,7 @@ export class FootBallLeaguesController {
   async index(request: Request, response: Response) {
     const footBallLeaguesService = new FootBallLeaguesService();
     const result = await footBallLeaguesService.execute();
-    return result.status(200).json();
+    console.log("Controller******************.: ", result);
+    return result;
   }
 }
