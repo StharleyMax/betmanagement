@@ -5,10 +5,9 @@ import { FootBallLeaguesService } from '../service/footBallLeagues.service';
 export class FootBallLeaguesController {
 
 
-  async index(request: Request, response: Response) {
+  async index(request: Request, response: Response): Promise<any> {
     const footBallLeaguesService = new FootBallLeaguesService();
     const result = await footBallLeaguesService.execute();
-    console.log("Controller******************.: ", result);
-    return result;
+    return response.json(result);
   }
 }

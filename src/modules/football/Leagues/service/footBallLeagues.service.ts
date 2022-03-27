@@ -16,6 +16,6 @@ export class FootBallLeaguesService {
     }).then((response) => {
       return leagues.push(response.data);
     });
-    console.log(leagues);
+    return leagues;
   }
 }
