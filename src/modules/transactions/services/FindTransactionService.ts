@@ -9,7 +9,6 @@ export class FindTransactionService {
     const transactions = await this.transactionRepository.find({
       where: { userId },
     });
-    console.log(transactions);
     return transactions;
   }
 }

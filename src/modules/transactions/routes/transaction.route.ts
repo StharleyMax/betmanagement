@@ -22,6 +22,15 @@ transactionRouter.post(
   }),
   transactionController.create,
 );
-transactionRouter.get('/', transactionController.find)
+transactionRouter.get('/', transactionController.find);
+transactionRouter.get(
+  '/:idTransaction',
+  celebrate({
+    [Segments.PARAMS]: {
+      idTransaction: Joi.number().required(),
+    },
+  }),
+  transactionController.show,
+);
 
 export default transactionRouter;
