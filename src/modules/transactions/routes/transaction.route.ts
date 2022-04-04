@@ -7,6 +7,7 @@ import { TypeTransaction } from '../enum/type-transaction';
 const transactionRouter = Router();
 
 const transactionController = new TransactionController();
+
 transactionRouter.post(
   '/',
   celebrate({
@@ -21,5 +22,6 @@ transactionRouter.post(
   }),
   transactionController.create,
 );
+transactionRouter.get('/', transactionController.find)
 
 export default transactionRouter;
