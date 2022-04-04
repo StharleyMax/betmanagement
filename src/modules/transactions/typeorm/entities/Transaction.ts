@@ -1,4 +1,5 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
+import { TypeTransaction } from '@modules/transactions/enum/type-transaction';
 import { User } from '@modules/users/typeorm/entities/User';
 import {
   Column,
@@ -34,7 +35,7 @@ export class Transaction {
   oldBalance: number;
 
   @Column()
-  type: string; //enum
+  type: string;
 
   @Column()
   price: number;

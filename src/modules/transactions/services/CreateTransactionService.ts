@@ -1,11 +1,12 @@
 import { BankRepository } from '@modules/bank/typeorm/repositories/BankRepository';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
+import { TypeTransaction } from '../enum/type-transaction';
 import { TransactionsRepository } from '../typeorm/repositories/TransactionsRepository';
 
 type TransactionProps = {
   bankId: number;
-  type: string; //enum
+  type: TypeTransaction;
   price: number;
 };
 
@@ -22,9 +23,9 @@ export class CreateTransactionService {
       where: { id: bankId, userId },
     });
     if (!bank) throw new AppError('bank not found');
-    if (type === 'deposit') bank.balance += price;
-    if (type === 'withdraw') {
-      if (bank.balance > price)
+    if (type === TypeTransaction.DEPOSIT) bank.balance += price;
+    if (type === TypeTransaction.WITHDRAW) {
+      if (bank.balance < price)
         throw new AppError('Insufficient funds for this bank');
       bank.balance -= price;
     }
