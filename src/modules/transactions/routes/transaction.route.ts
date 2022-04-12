@@ -32,5 +32,6 @@ transactionRouter.get(
   }),
   transactionController.show,
 );
+transactionRouter.put('/:id', transactionController.update)
 
 export default transactionRouter;

@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { CreateTransactionService } from '../services/CreateTransactionService';
 import { FindTransactionService } from '../services/FindTransactionService';
 import { ShowTransactionService } from '../services/ShowTransactionService';
+import { UpdateTransactionService } from '../services/UpdateTransactionService';
 
 export class TransactionController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -37,5 +38,20 @@ export class TransactionController {
     );
     if (!transaction) throw new AppError('transaction not found', 404);
     return response.json(transaction);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { userId } = request.query;
+    if (!userId) throw new AppError('missing param: userId');
+    const { id } = request.params;
+    const { bankId, type, price } = request.body;
+    const updateTransactionService = new UpdateTransactionService();
+    const update = await updateTransactionService.execute(+userId, {
+      transactionId: +id,
+      bankId,
+      type,
+      price,
+    });
+    return response.json(update);
   }
 }

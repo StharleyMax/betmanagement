@@ -23,6 +23,7 @@ export class CreateTransactionService {
       where: { id: bankId, userId },
     });
     if (!bank) throw new AppError('bank not found');
+    const oldBalance = bank.balance;
     if (type === TypeTransaction.DEPOSIT) bank.balance += price;
     if (type === TypeTransaction.WITHDRAW) {
       if (bank.balance < price)
@@ -34,7 +35,7 @@ export class CreateTransactionService {
       bankId,
       type,
       price,
-      oldBalance: bank.balance,
+      oldBalance,
     });
     await this.bankRepository.save(bank);
     return transaction;
