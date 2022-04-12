@@ -8,6 +8,7 @@ export class UsersRepository extends Repository<User> {
     const user = await this.query(
       `select * from users where ${type} ${operator} ${value}`,
     );
+
     return user;
   }
 

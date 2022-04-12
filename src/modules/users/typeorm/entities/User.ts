@@ -1,4 +1,5 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
+import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
 import {
   Entity,
   Column,
@@ -16,6 +17,9 @@ export class User {
 
   @OneToMany(() => Bank, bank => bank.user)
   bank: Bank[];
+
+  @OneToMany(() => Transaction, transaction => transaction.user)
+  transactions: Transaction[];
 
   @Column()
   name: string;
