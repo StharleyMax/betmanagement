@@ -1,6 +1,7 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
 import { TypeTransaction } from '@modules/transactions/enum/type-transaction';
 import { User } from '@modules/users/typeorm/entities/User';
+import { IEntityContract } from '@shared/infra/IEntityContract';
 import {
   Column,
   CreateDateColumn,
@@ -13,7 +14,7 @@ import {
 } from 'typeorm';
 
 @Entity('transactions')
-export class Transaction {
+export class Transaction implements IEntityContract {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
