@@ -11,9 +11,10 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
+import { IEntityContract } from '@shared/infra/IEntityContract';
 
 @Entity('bank')
-export class Bank {
+export class Bank implements IEntityContract {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -37,7 +38,7 @@ export class Bank {
   description: string;
 
   @Column()
-  balance: number
+  balance: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

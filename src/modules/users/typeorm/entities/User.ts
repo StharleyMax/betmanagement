@@ -1,5 +1,6 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
 import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
+import { IEntityContract } from '@shared/infra/IEntityContract';
 import {
   Entity,
   Column,
@@ -11,7 +12,7 @@ import {
 } from 'typeorm';
 
 @Entity('users')
-export class User {
+export class User implements IEntityContract  {
   @PrimaryGeneratedColumn()
   id: number;
 
