@@ -7,6 +7,4 @@ const coachsController = new CoachsController();
 
 coachsTeamIdRouter.get('/:id', coachsController.coachsTeamById);
 
-
-
 export default coachsTeamIdRouter;
