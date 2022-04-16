@@ -1,3 +1,4 @@
+import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
 import { User } from '@modules/users/typeorm/entities/User';
 import {
   Entity,
@@ -8,16 +9,21 @@ import {
   DeleteDateColumn,
   JoinColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
+import { IEntityContract } from '@shared/infra/IEntityContract';
 
 @Entity('bank')
-export class Bank {
+export class Bank implements IEntityContract {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @ManyToOne(() => User, user => user.bank)
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @OneToMany(() => Transaction, transaction => transaction.bank)
+  transactions: Transaction[];
 
   @Column({ name: 'user_id' })
   userId: number;
@@ -30,6 +36,9 @@ export class Bank {
 
   @Column()
   description: string;
+
+  @Column()
+  balance: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
