@@ -3,10 +3,7 @@ import { FootBallLeaguesService } from '../service/footBallLeagues.service';
 import { FootBallLeaguesByIdService } from '../service/footBallLeaguesById.service';
 import { FootBallLeaguesCoutryName } from '../service/footBallLeaguesCoutryName.service';
 
-
 export class FootBallLeaguesController {
-
-
   async index(request: Request, response: Response): Promise<any> {
     const footBallLeaguesService = new FootBallLeaguesService();
     const result = await footBallLeaguesService.execute();
