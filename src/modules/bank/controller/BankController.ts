@@ -8,18 +8,14 @@ import { UpdateBankService } from '../services/UpdateBankService';
 
 export class BankController {
   public async index(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
-    if (!userId) throw new AppError('userId is required');
+    const userId = request.user.id;
     const bankService = new FindBankService();
-    const bank = await bankService.execute(+userId);
+    const bank = await bankService.execute(userId);
     return response.json(bank);
   }
 
   public async find(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
-    if (!userId) throw new AppError('userId is required');
+    const userId = request.user.id;
     const bankId = request.params.id;
     const bankService = new ShowBankService();
     const bank = await bankService.execute(+bankId, +userId);
@@ -27,10 +23,8 @@ export class BankController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
+    const userId = request.user.id;
     const { name, nameBet, description } = request.body;
-    if (!userId) throw new AppError('userId is required');
     const bankService = new CreateBankService();
     const bank = await bankService.execute(
       { name, nameBet, description },
@@ -40,9 +34,7 @@ export class BankController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
-    if (!userId) throw new AppError('userId is required');
+    const userId = request.user.id;
     const { name, description, nameBet } = request.body;
     const bankId = request.params.id;
     const bankService = new UpdateBankService();
@@ -55,9 +47,7 @@ export class BankController {
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
-    if (!userId) throw new AppError('userId is required');
+    const userId = request.user.id;
     const bankId = request.params.id;
     const bankService = new DeleteBankService();
     await bankService.execute(+bankId, +userId);

@@ -5,12 +5,15 @@ import sportsRouter from '@modules/sports/routes/sports.routes';
 import footBallLeaguesRouter from '@modules/football/Leagues/routes/footBallLeagues.route';
 import coachsTeamRouter from '@modules/football/CoachsTeam/routes/coachs.routes';
 import transactionRouter from '@modules/transactions/routes/transaction.route';
+import sessionsRouter from '@modules/users/routes/sessions.routes';
+import isAuthenticated from '../middleware/isAuthenticated';
 
 const routes = Router();
 
 routes.use('/users', usersRouter);
-routes.use('/bank', bankRouter);
-routes.use('/transactions', transactionRouter);
+routes.use('/bank', isAuthenticated, bankRouter);
+routes.use('/transactions', isAuthenticated, transactionRouter);
+routes.use('/session', sessionsRouter);
 
 //Sports
 routes.use('/sports', sportsRouter);
