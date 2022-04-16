@@ -12,8 +12,8 @@ const routes = Router();
 
 routes.use('/users', usersRouter);
 routes.use('/bank', isAuthenticated, bankRouter);
-routes.use('/transactions', transactionRouter);
-routes.use('/session', sessionsRouter)
+routes.use('/transactions', isAuthenticated, transactionRouter);
+routes.use('/session', sessionsRouter);
 
 //Sports
 routes.use('/sports', sportsRouter);

@@ -7,12 +7,10 @@ import { UpdateTransactionService } from '../services/UpdateTransactionService';
 
 export class TransactionController {
   public async create(request: Request, response: Response): Promise<Response> {
-    //const userId = request.user.id;
-    const { userId } = request.query;
-    if (!userId) throw new AppError('missing param: userId');
+    const userId = request.user.id;
     const { bankId, type, price } = request.body;
     const transactionService = new CreateTransactionService();
-    const transaction = await transactionService.execute(+userId, {
+    const transaction = await transactionService.execute(userId, {
       bankId,
       type,
       price,
@@ -21,32 +19,29 @@ export class TransactionController {
   }
 
   public async find(request: Request, response: Response): Promise<Response> {
-    const { userId } = request.query;
-    if (!userId) throw new AppError('missing param: userId');
+    const userId = request.user.id;
     const findTransactionService = new FindTransactionService();
     return response.json(await findTransactionService.execute(+userId));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const { userId } = request.query;
-    if (!userId) throw new AppError('missing param: userId');
+    const userId = request.user.id;
     const { idTransaction } = request.params;
     const showTransactionService = new ShowTransactionService();
     const transaction = await showTransactionService.execute(
       +idTransaction,
-      +userId,
+      userId,
     );
     if (!transaction) throw new AppError('transaction not found', 404);
     return response.json(transaction);
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { userId } = request.query;
-    if (!userId) throw new AppError('missing param: userId');
+    const userId = request.user.id;
     const { id } = request.params;
     const { bankId, type, price } = request.body;
     const updateTransactionService = new UpdateTransactionService();
-    const update = await updateTransactionService.execute(+userId, {
+    const update = await updateTransactionService.execute(userId, {
       transactionId: +id,
       bankId,
       type,
