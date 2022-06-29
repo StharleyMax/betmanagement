@@ -1,18 +1,15 @@
-import { ISportsInterface } from '../Sports.interface';
-import { SportsEntity } from '../../typeorm/entities/sports.entities';
+import { ISportsInterface } from '../interfaces/Sports.interface';
+import { SportsEntityFake } from '../entityFake/Sports.entityFake';
+import { GetAllSportsService } from '../../services/GetallSports.service';
 
 export class SportsRepositoryInMemory implements ISportsInterface {
-  private sports: SportsEntity[] = [];
+  private sports: SportsEntityFake[] = [];
 
-  async create(sport: SportsEntity): Promise<SportsEntity> {
-    Object.assign(sport, {
-      name: 'Sports Name',
-      category: 'Sports Category',
-      actived: true,
-      create_at: new Date(),
-      update_at: new Date(),
-    });
-    this.sports.push(sport);
-    return sport;
+  constructor(sports: SportsEntityFake[]) {
+    this.sports = sports;
+  }
+
+  async findOne(id: number): Promise<any> {
+    return Promise.resolve(this.sports.find(sports => sports.id === id));
   }
 }

@@ -11,7 +11,7 @@ export class CreateSports {
     const repo = getRepository(SportsEntity);
 
     if (await repo.findOne({ name, actived: true })) {
-      return new Error("Name already exists")
+      throw new Error("Name already exists")
     }
 
     const sports = repo.create({ name, category, actived: true });
