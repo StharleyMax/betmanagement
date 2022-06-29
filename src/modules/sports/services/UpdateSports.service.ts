@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { SportsEntity } from "../typeorm/entities/sports.entities";
 import { UpdateSportsDTO } from "../dto/sports.dto";
-import AppError from "@shared/errors/AppError";
+import AppError from "../../../shared/errors/AppError";
 
 
 

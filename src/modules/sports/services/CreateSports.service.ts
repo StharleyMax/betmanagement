@@ -13,6 +13,7 @@ export class CreateSports {
     if (await repo.findOne({ name, actived: true })) {
       return new Error("Name already exists")
     }
+
     const sports = repo.create({ name, category, actived: true });
     return await repo.save(sports);
   }

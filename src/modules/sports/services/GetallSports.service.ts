@@ -15,6 +15,7 @@ export class GetAllSportsService {
     if (sports?.actived != true) {
       return new Error('Sports not exists!');
     }
+
     return sports;
   }
 }

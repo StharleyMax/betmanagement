@@ -5,6 +5,6 @@ import { BankRepository } from '../typeorm/repositories/BankRepository';
 export class CreateBankService {
   public async execute(bankDto: BankDto, userId: number) {
     const bankRepository = getCustomRepository(BankRepository);
-    return bankRepository.save({ ...bankDto, userId });
+    return await bankRepository.save({ ...bankDto, userId });
   }
 }
