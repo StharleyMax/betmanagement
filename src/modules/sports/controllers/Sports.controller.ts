@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { ActivedSport } from '../services/ActivedSports.service';
 import { CreateSports } from "../services/CreateSports.service";
 import { DeleteSportsService } from '../services/DeleteSports.service';
-import { GetAllSportsService } from '../services/GetallSports.service';
+import { FindSportsService } from '../services/FindSports.service';
 import { UpdateSports } from '../services/UpdateSports.service';
 
 
@@ -10,19 +10,25 @@ export class SportsControllers {
 
 
   public async index(request: Request, response: Response) {
-    const listSports = new GetAllSportsService();
-    const sports = await listSports.execute();
+    const findSports = new FindSportsService();
+    const sports = await findSports.find();
     return response.json(sports);
   }
 
-  public async getById(request: Request, response: Response) {
+  public async findOne(request: Request, response: Response) {
     const { id } = request.params;
-    const listSportsId = new GetAllSportsService();
-    const sports = await listSportsId.getById(+id);
+    const findOneSports = new FindSportsService();
+    const sports = await findOneSports.findOne(+id);
     if (sports instanceof Error) {
       return response.status(400).json(sports.message);
     }
     return response.status(200).send(sports);
+  }
+
+  public async findDisable(request: Request, response: Response){
+    const findSports = new FindSportsService();
+    const sports = await findSports.findDisable();
+    return response.json(sports);
   }
 
   public async create(request: Request, response: Response) {

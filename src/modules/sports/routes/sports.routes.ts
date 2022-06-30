@@ -7,7 +7,8 @@ const sportsController = new SportsControllers();
 
 sportsRouter.post('/', sportsController.create);
 sportsRouter.get('/', sportsController.index);
-sportsRouter.get('/:id', sportsController.getById);
+sportsRouter.get('/disable', sportsController.findDisable);
+sportsRouter.get('/:id', sportsController.findOne);
 sportsRouter.delete('/:id', sportsController.delete);
 sportsRouter.patch('/:id', sportsController.activedSports);
 sportsRouter.put('/:id', sportsController.updateSports);

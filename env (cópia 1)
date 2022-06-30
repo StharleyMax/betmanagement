@@ -1,0 +1,10 @@
+PORT = 3000
+DATABASE_URL = postgres://dtlfqvijwayrgg:7fa90ce2bd42d6fc5d1a0563f3781616a5d5a4247b09d4a9b238dc891835867e@ec2-34-231-183-74.compute-1.amazonaws.com:5432/d4fopri5hjdop9
+
+#JWT
+JWT_SECRET=seilaqlquma
+
+#API-FOOTBALL
+API_FOOTBALL = https://api-football-v1.p.rapidapi.com/v3
+X_RAPIDAPI_HOST = api-football-v1.p.rapidapi.com
+X_RAPIDAPI_KEY = 6593d115acmsh99f35fc3586c0b7p1355d1jsnb578490ba3eb

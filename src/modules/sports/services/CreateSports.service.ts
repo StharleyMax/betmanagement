@@ -7,7 +7,7 @@ import AppError from '@shared/errors/AppError';
 
 export class CreateSports {
 
-  async execute({ name, category }: SportsDTO): Promise<SportsEntity | Error> {
+  async execute({ name, category }: SportsDTO): Promise<SportsDTO | Error> {
     const repo = getRepository(SportsEntity);
 
     if (await repo.findOne({ name, actived: true })) {

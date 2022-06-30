@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors'
+import 'express-async-errors';
 import 'reflect-metadata';
 import '@shared/typeorm';
 import routes from '@shared/http/routes';
@@ -22,7 +22,7 @@ app.use(
     }
     return response.status(500).json({
       status: 'error',
-      message: 'Internal server error',
+      message: `Internal server error ${error}`,
     });
   },
 );
