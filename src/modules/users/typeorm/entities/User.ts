@@ -1,4 +1,5 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
+import { BetEntity } from '@modules/bet/typeorm/entities/bet.entities';
 import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
 import { IEntityContract } from '@shared/infra/IEntityContract';
 import {
@@ -12,9 +13,12 @@ import {
 } from 'typeorm';
 
 @Entity('users')
-export class User implements IEntityContract  {
+export class User implements IEntityContract {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @OneToMany(() => BetEntity, bet => bet.user)
+  bet: BetEntity;
 
   @OneToMany(() => Bank, bank => bank.user)
   bank: Bank[];

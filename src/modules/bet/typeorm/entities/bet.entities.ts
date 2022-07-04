@@ -1,4 +1,5 @@
 import { SportsEntity } from '@modules/sports/typeorm/entities/sports.entities';
+import { User } from '@modules/users/typeorm/entities/User';
 import {
   CreateDateColumn,
   Entity,
@@ -14,7 +15,9 @@ export class BetEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  idUser: number;
+  @ManyToMany(() => User, user => user.bet)
+  @JoinColumn({ name: 'idUser' })
+  user: User;
 
   @ManyToMany(() => SportsEntity, sportsEntity => sportsEntity.bet)
   @JoinColumn({ name: 'idSports' })

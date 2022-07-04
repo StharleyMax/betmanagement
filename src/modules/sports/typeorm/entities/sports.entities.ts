@@ -1,14 +1,19 @@
-import { BetEntity } from "@modules/bet/typeorm/entities/bet.entities";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BetEntity } from '@modules/bet/typeorm/entities/bet.entities';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('sports')
 export class SportsEntity {
-
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-
-  @OneToMany(()=> BetEntity, bet => bet.sportsEntity);
+  @OneToMany(() => BetEntity, bet => bet.sportsEntity)
   bet: BetEntity;
 
   @Column({ name: 'name' })
