@@ -1,0 +1,8 @@
+1 - Pegar o valor da banca.
+2 - pegar o valo da aposta e retirar da banca.
+3 - se de RED , pegar o valor da aposta menos banca.
+4 - se de Green, pegar o valor da aposta + banca.
+5 - calcular no final quantos porcentos ganhou ou perdeu no dia.
+6 - verificar quantas entradas foi feito no dia. Pegar data/hora e qual os esportes.
+------------------------------------
+
