@@ -1,8 +1,11 @@
 import { BetEntity } from '@modules/bet/typeorm/entities/bet.entities';
+import { User } from '@modules/users/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -12,6 +15,10 @@ import {
 export class SportsEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
+
+  @ManyToOne(() => User, user => user.sports)
+  @JoinColumn({ name: 'idUser' })
+  user: User;
 
   @OneToMany(() => BetEntity, bet => bet.sportsEntity)
   bet: BetEntity;
