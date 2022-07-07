@@ -3,8 +3,7 @@ import { SportsEntity } from '../typeorm/entities/sports.entities';
 
 export class FindSportsService {
   async find() {
-    const repo = getRepository(SportsEntity);
-    return await repo.find({ where: { actived: true } });
+    return await getRepository(SportsEntity).find({ where: { actived: true } });
   }
 
   async findOne(id: any) {
@@ -19,7 +18,8 @@ export class FindSportsService {
     return sports;
   }
   async findDisable() {
-    const repo = getRepository(SportsEntity);
-    return await repo.find({ where: { actived: false } });
+    return await getRepository(SportsEntity).find({
+      where: { actived: false },
+    });
   }
 }

@@ -8,6 +8,8 @@ const sportsController = new SportsControllers();
 sportsRouter.post('/', sportsController.create);
 sportsRouter.get('/', sportsController.index);
 sportsRouter.get('/disable', sportsController.findDisable);
+
+//Todos que precisam de ID precisam ficar por último
 sportsRouter.get('/:id', sportsController.findOne);
 sportsRouter.delete('/:id', sportsController.delete);
 sportsRouter.patch('/:id', sportsController.activedSports);

@@ -6,9 +6,8 @@ export class FindTransactionService {
     private transactionRepository = getCustomRepository(TransactionsRepository),
   ) {}
   public async execute(userId: number) {
-    const transactions = await this.transactionRepository.find({
+    return await this.transactionRepository.find({
       where: { userId },
     });
-    return transactions;
   }
 }

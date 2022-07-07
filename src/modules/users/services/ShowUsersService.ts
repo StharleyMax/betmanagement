@@ -10,8 +10,11 @@ export class ShowUsersService {
     value: string,
   ): Promise<User | undefined> {
     const usersRepository = getCustomRepository(UsersRepository);
+
     const user = await usersRepository.findCustom(type, operator, value);
+
     if (!user) throw new AppError('User not found');
+
     return user;
   }
 }
