@@ -15,7 +15,7 @@ export class ValueBank {
     if (!findSports?.id) throw new Error('Sports not found. ValueBankService');
     const idSports = findSports?.id;
 
-    //Pegar valor da banca na conta do usuário
+    //Pega o valor da banca na conta do usuário
     const resultValueBank = await bank.findOne(idUser);
 
     //Tradução.: prohibited --> Entrada
@@ -24,9 +24,9 @@ export class ValueBank {
     const value = resultValueBank?.balance;
     if (!value) throw new Error('Valeu not found'); //Verificando se o valor foi encontrado.
 
-    let aposta: boolean = true;
+    let aposta: boolean = true; // se a entrada deu Green ou Red ( aposta = False)
 
-    const saveBet: any = { idUser, idSports };
+    const saveBet: any = { idUser, idSports, create_at: new Date() };
 
     //Verificar se saldo é maior que 0
     if (value > 0 && aposta === true) {

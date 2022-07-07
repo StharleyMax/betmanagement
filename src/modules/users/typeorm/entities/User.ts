@@ -1,5 +1,5 @@
 import { Bank } from '@modules/bank/typeorm/entities/Bank';
-import { BetEntity } from '@modules/bet/typeorm/entities/bet.entities';
+import { BetEntity } from '@modules/bets/typeorm/entities/bet.entities';
 import { SportsEntity } from '@modules/sports/typeorm/entities/sports.entities';
 import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
 import { IEntityContract } from '@shared/infra/IEntityContract';
@@ -17,9 +17,6 @@ import {
 export class User implements IEntityContract {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @OneToMany(() => SportsEntity, sports => sports.user)
-  sports: SportsEntity;
 
   @OneToMany(() => BetEntity, bet => bet.user)
   bet: BetEntity;

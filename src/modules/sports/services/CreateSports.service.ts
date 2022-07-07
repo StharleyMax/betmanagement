@@ -4,18 +4,15 @@ import { SportsDTO } from '../dto/sports.dto';
 import { getRepository } from 'typeorm';
 import AppError from '@shared/errors/AppError';
 
-
 export class CreateSports {
-
   async execute({ name, category }: SportsDTO): Promise<SportsDTO | Error> {
-    const repo = getRepository(SportsEntity);
+    const createSports = getRepository(SportsEntity);
 
-    if (await repo.findOne({ name, actived: true })) {
-      throw new Error("Name already exists")
+    if (await createSports.findOne({ name, actived: true })) {
+      throw new Error('Name already exists');
     }
 
-    const sports = repo.create({ name, category, actived: true });
-    return await repo.save(sports);
+    const sports = createSports.create({ name, category, actived: true });
+    return await createSports.save(sports);
   }
-
 }

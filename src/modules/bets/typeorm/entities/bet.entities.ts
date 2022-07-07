@@ -1,6 +1,7 @@
 import { SportsEntity } from '@modules/sports/typeorm/entities/sports.entities';
 import { User } from '@modules/users/typeorm/entities/User';
 import {
+  Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
@@ -10,18 +11,27 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('bet')
+@Entity('bets')
 export class BetEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
   @ManyToMany(() => User, user => user.bet)
-  @JoinColumn({ name: 'idUser' })
+  @JoinColumn({ name: 'id_user' })
   user: User;
 
   @ManyToMany(() => SportsEntity, sportsEntity => sportsEntity.bet)
-  @JoinColumn({ name: 'idSports' })
+  @JoinColumn({ name: 'id_sport' })
   sportsEntity: SportsEntity;
+
+  @Column({ name: 'odd' })
+  odd: number; // number
+
+  @Column({ name: 'game' })
+  game: string; // string
+
+  @Column({ name: 'status' })
+  status: boolean; //boolean
 
   @CreateDateColumn({ type: 'timestamptz', name: 'create_at' })
   create_at: Date;

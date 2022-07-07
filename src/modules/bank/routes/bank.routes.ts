@@ -14,7 +14,7 @@ bankRouter.get(
       id: Joi.number().required(),
     },
   }),
-  bankController.find,
+  bankController.findOne,
 );
 bankRouter.post(
   '/',

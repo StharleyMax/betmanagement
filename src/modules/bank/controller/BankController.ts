@@ -14,7 +14,7 @@ export class BankController {
     return response.json(bank);
   }
 
-  public async find(request: Request, response: Response): Promise<Response> {
+  public async findOne(request: Request, response: Response): Promise<Response> {
     const userId = request.user.id;
     const bankId = request.params.id;
     const bankService = new ShowBankService();
