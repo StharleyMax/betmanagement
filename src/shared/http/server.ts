@@ -7,10 +7,16 @@ import routes from '@shared/http/routes';
 import { errors } from 'celebrate';
 import AppError from '@shared/errors/AppError';
 
+/*Swagger*/
+import swaggerUi from 'swagger-ui-express';
+import { swaggerDocument } from './swagger';
+
 const app = express();
+
 
 app.use(express.json());
 app.use(routes);
+app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(errors());
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
