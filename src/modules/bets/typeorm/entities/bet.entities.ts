@@ -1,5 +1,5 @@
-import { SportsEntity } from '@modules/sports/typeorm/entities/sports.entities';
-import { User } from '@modules/users/typeorm/entities/User';
+import { SportsEntity } from '../../../sports/typeorm/entities/sports.entities';
+import { User } from '../../../users/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,

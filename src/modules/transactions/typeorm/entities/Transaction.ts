@@ -1,6 +1,6 @@
-import { Bank } from '@modules/bank/typeorm/entities/Bank';
-import { TypeTransaction } from '@modules/transactions/enum/type-transaction';
-import { User } from '@modules/users/typeorm/entities/User';
+import { Bank } from '../../../bank/typeorm/entities/Bank';
+import { TypeTransaction } from '../../../transactions/enum/type-transaction';
+import { User } from '../../../users/typeorm/entities/User';
 import { IEntityContract } from '@shared/infra/IEntityContract';
 import {
   Column,

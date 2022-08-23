@@ -1,5 +1,5 @@
-import { BetEntity } from '@modules/bets/typeorm/entities/bet.entities';
-import { User } from '@modules/users/typeorm/entities/User';
+import { BetEntity } from '../../../bets/typeorm/entities/bet.entities';
+import { User } from '../../../users/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,

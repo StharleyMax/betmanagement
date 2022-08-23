@@ -1,5 +1,5 @@
-import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
-import { User } from '@modules/users/typeorm/entities/User';
+import { Transaction } from '../../../transactions/typeorm/entities/Transaction';
+import { User } from '../../../users/typeorm/entities/User';
 import {
   Entity,
   Column,

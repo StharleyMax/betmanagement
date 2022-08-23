@@ -1,7 +1,7 @@
-import { Bank } from '@modules/bank/typeorm/entities/Bank';
-import { BetEntity } from '@modules/bets/typeorm/entities/bet.entities';
-import { SportsEntity } from '@modules/sports/typeorm/entities/sports.entities';
-import { Transaction } from '@modules/transactions/typeorm/entities/Transaction';
+import { Bank } from '../../../bank/typeorm/entities/Bank';
+import { BetEntity } from '../../../bets/typeorm/entities/bet.entities';
+import { SportsEntity } from '../../../sports/typeorm/entities/sports.entities';
+import { Transaction } from '../../../transactions/typeorm/entities/Transaction';
 import { IEntityContract } from '@shared/infra/IEntityContract';
 import {
   Entity,

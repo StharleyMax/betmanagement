@@ -9,7 +9,7 @@ import { UpdateSports } from '../services/UpdateSports.service';
 export class SportsControllers {
 
 
-  public async index(request: Request, response: Response) {
+  public async index(response: Response) {
     const findSports = new FindSportsService();
     const sports = await findSports.find();
     return response.json(sports);

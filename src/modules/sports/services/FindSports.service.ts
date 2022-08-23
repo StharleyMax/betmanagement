@@ -11,9 +11,7 @@ export class FindSportsService {
     const sports = await repo.findOne({
       where: { id: id, actived: true },
     });
-    if (sports?.actived != true) {
-      throw new Error('Sports not exists!');
-    }
+    if (!sports?.actived) throw new Error('Sports not exists!');
 
     return sports;
   }
