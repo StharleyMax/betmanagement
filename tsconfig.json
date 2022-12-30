@@ -11,7 +11,7 @@
     "emitDecoratorMetadata": true,
     "composite": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "baseUrl": "./",
     "paths": {
       "@config/*": ["src/config/*"],
